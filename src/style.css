@@ -1,0 +1,214 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-sans: 'Manrope', 'Helvetica Neue', sans-serif;
+  --color-ink: #07060a;
+  --color-ink-2: #100e14;
+  --color-gold: #d4af7a;
+  --color-gold-dim: #8d734c;
+  --color-ivory: #f3ede2;
+  --color-mute: #b8b0a4;
+}
+
+:root {
+  color-scheme: dark;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-t: env(safe-area-inset-top, 0px);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #07060a;
+  color: var(--color-ivory);
+  font-family: var(--font-sans);
+  font-feature-settings: 'ss01';
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  opacity: 0.09;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.orb {
+  pointer-events: none;
+  position: fixed;
+  width: 42rem;
+  height: 42rem;
+  border-radius: 999px;
+  filter: blur(80px);
+  opacity: 0.18;
+  z-index: 0;
+}
+
+.orb-a {
+  top: -12rem;
+  left: -10rem;
+  background: radial-gradient(circle, #d4af7a 0%, transparent 68%);
+}
+
+.orb-b {
+  right: -14rem;
+  bottom: 10%;
+  background: radial-gradient(circle, #3a2a18 0%, transparent 70%);
+}
+
+.hairline {
+  border: 1px solid color-mix(in srgb, var(--color-gold) 28%, transparent);
+}
+
+.glass {
+  background: color-mix(in srgb, #0c0a10 72%, transparent);
+  backdrop-filter: blur(18px) saturate(1.2);
+}
+
+.catalog {
+  display: grid;
+  gap: 0.9rem;
+}
+
+@media (min-width: 720px) {
+  .catalog {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+
+  .catalog > :nth-child(1),
+  .catalog > :nth-child(2) {
+    grid-column: span 6;
+  }
+
+  .catalog > :nth-child(n + 3) {
+    grid-column: span 4;
+  }
+
+  .catalog > :nth-child(6),
+  .catalog > :nth-child(7) {
+    grid-column: span 6;
+  }
+}
+
+.hero-card {
+  --accent: var(--color-gold);
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.35rem;
+  isolation: isolate;
+  min-height: 28rem;
+}
+
+@media (min-width: 720px) {
+  .catalog > :nth-child(1) .hero-card,
+  .catalog > :nth-child(2) .hero-card {
+    min-height: 34rem;
+  }
+}
+
+.hero-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transform: scale(1.04);
+  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-card:hover img {
+  transform: scale(1.1);
+}
+
+.hero-card .veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 28%, #07060a 96%),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 16%, transparent), transparent 40%);
+}
+
+.meter {
+  height: 2px;
+  background: color-mix(in srgb, var(--color-ivory) 10%, transparent);
+  overflow: hidden;
+}
+
+.meter > i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--color-gold));
+}
+
+.ring {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 55%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, #000 40%, transparent);
+  animation: pulse-ring 8s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.035);
+    opacity: 1;
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-card img,
+  .ring,
+  .fade-up {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+}
