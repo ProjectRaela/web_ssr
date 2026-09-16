@@ -51,7 +51,7 @@ function pick() {
             class="aspect-[4/5] w-full object-cover object-top"
           />
         </figure>
-        <figure class="hairline hidden overflow-hidden rounded-[1.6rem] sm:block">
+        <figure class="hairline hidden overflow-hidden rounded-[1.6rem] lg:block">
           <img
             :src="`/heroes/${heroine.id}/full.jpg`"
             :alt="`${copy.name} — ${t('full')}`"
@@ -152,7 +152,7 @@ function pick() {
       </div>
     </div>
 
-    <figure class="hairline mt-8 overflow-hidden rounded-[1.6rem] sm:hidden">
+    <figure class="hairline mt-8 overflow-hidden rounded-[1.6rem] lg:hidden">
       <img
         :src="`/heroes/${heroine.id}/full.jpg`"
         :alt="`${copy.name} — ${t('full')}`"
