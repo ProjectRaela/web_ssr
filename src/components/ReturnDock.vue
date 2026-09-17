@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from '../lib/locale'
 import { returnToBot, isTelegram } from '../lib/telegram'
 import { BOT_URL, CHANNEL_URL, useFrom } from '../lib/from'
+import { goToBot, isBotReady } from '../lib/bot'
 
 const { t } = useI18n()
 const { fromTelegram } = useFrom()
@@ -11,11 +12,15 @@ const href = computed(() => (fromTelegram.value ? BOT_URL : CHANNEL_URL))
 const label = computed(() => (fromTelegram.value ? t('returnBot') : t('openChannel')))
 
 function go() {
-  if (fromTelegram.value && isTelegram()) {
-    returnToBot({ action: 'close' })
+  if (fromTelegram.value) {
+    if (isTelegram() && isBotReady) {
+      returnToBot({ action: 'close' })
+      return
+    }
+    goToBot()
     return
   }
-  window.location.href = href.value
+  window.location.href = CHANNEL_URL
 }
 </script>
 

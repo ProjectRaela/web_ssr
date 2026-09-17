@@ -4,6 +4,7 @@ import { computed } from 'vue'
 import SiteHeader from './components/SiteHeader.vue'
 import ReturnDock from './components/ReturnDock.vue'
 import CookieBanner from './components/CookieBanner.vue'
+import ComingSoonModal from './components/ComingSoonModal.vue'
 import { isChoicePath } from './lib/paths'
 
 const route = useRoute()
@@ -21,5 +22,6 @@ const onChoice = computed(() => isChoicePath(route.path))
     </main>
     <ReturnDock v-if="onChoice" />
     <CookieBanner />
+    <ComingSoonModal />
   </div>
 </template>

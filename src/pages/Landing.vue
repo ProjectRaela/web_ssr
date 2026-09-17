@@ -8,6 +8,7 @@ import { heroines } from '../data/heroines'
 import { FEATURES, STEPS, DAY } from '../data/landing'
 import { useI18n } from '../lib/locale'
 import { BOT_URL, useFrom } from '../lib/from'
+import { handleBotClick } from '../lib/bot'
 
 const { t } = useI18n()
 const { choiceLink, fromTelegram } = useFrom()
@@ -43,6 +44,7 @@ watchEffect(() => {
               :href="botHref"
               class="land-btn land-btn--gold"
               rel="noopener noreferrer"
+              @click="handleBotClick"
             >
               {{ botLabel }}
             </a>
@@ -210,7 +212,12 @@ watchEffect(() => {
           </li>
         </ol>
         <div class="land-actions land-actions--center">
-          <a :href="botHref" class="land-btn land-btn--gold" rel="noopener noreferrer">
+          <a
+            :href="botHref"
+            class="land-btn land-btn--gold"
+            rel="noopener noreferrer"
+            @click="handleBotClick"
+          >
             {{ botLabel }}
           </a>
         </div>

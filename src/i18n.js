@@ -22,6 +22,13 @@ export const messages = {
       accept: 'Accept',
       decline: 'Decline',
     },
+    soon: {
+      kicker: 'Soon',
+      title: 'Still in the making',
+      text: 'The bot is not open yet. Stay close in the channel — news and the first doors appear there.',
+      channel: 'Open the channel',
+      close: 'Close',
+    },
     returnHint: 'You choose her there. This page is only to look.',
     chooseInBot: 'I’ve seen enough',
     land: {
@@ -250,6 +257,13 @@ export const messages = {
       text: 'Мы используем cookies и Яндекс Метрику, чтобы понимать, как сайт живёт. Можно принять аналитику или продолжить без неё.',
       accept: 'Принять',
       decline: 'Отклонить',
+    },
+    soon: {
+      kicker: 'Скоро',
+      title: 'Ещё в работе',
+      text: 'Бот пока закрыт. Будь рядом в канале — там новости и первые двери.',
+      channel: 'Открыть канал',
+      close: 'Закрыть',
     },
     returnHint: 'Выбор — там. Здесь только смотришь.',
     chooseInBot: 'Пора в бота',

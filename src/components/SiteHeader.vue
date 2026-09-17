@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from '../lib/locale'
 import { BOT_URL, useFrom } from '../lib/from'
+import { handleBotClick } from '../lib/bot'
 import { isChoicePath } from '../lib/paths'
 
 const route = useRoute()
@@ -41,6 +42,7 @@ const onChoice = computed(() => isChoicePath(route.path))
           :href="BOT_URL"
           class="land-btn land-btn--gold site-tg"
           rel="noopener noreferrer"
+          @click="handleBotClick"
         >
           Telegram
         </a>

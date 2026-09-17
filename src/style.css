@@ -2479,3 +2479,125 @@ a,
   opacity: 0;
   transform: translateY(1.25rem);
 }
+
+.soon-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  padding-bottom: calc(1.25rem + var(--safe-b));
+  background:
+    radial-gradient(60% 50% at 50% 40%, rgba(212, 176, 114, 0.12), transparent 70%),
+    color-mix(in srgb, #050304 72%, transparent);
+  backdrop-filter: blur(14px) saturate(1.1);
+}
+
+.soon-modal__card {
+  position: relative;
+  width: min(100%, 26rem);
+  padding: 2rem 1.6rem 1.55rem;
+  text-align: center;
+  border-radius: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 32%, transparent);
+  background:
+    linear-gradient(165deg, color-mix(in srgb, #1c1416 90%, #d4b072) 0%, #0e090a 55%, #090607 100%);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 color-mix(in srgb, var(--color-ivory) 10%, transparent);
+}
+
+.soon-modal__close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.85rem;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-mute);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.soon-modal__close:hover {
+  color: var(--color-gold);
+}
+
+.soon-modal__mark {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto;
+  border-radius: 999px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-gold) 35%, transparent);
+}
+
+.soon-modal__kicker {
+  margin: 1rem 0 0;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.soon-modal__title {
+  margin: 0.45rem 0 0;
+  font-size: clamp(1.55rem, 4vw, 1.9rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-ivory);
+  line-height: 1.15;
+}
+
+.soon-modal__text {
+  margin: 0.75rem auto 0;
+  max-width: 20rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--color-mute) 94%, transparent);
+}
+
+.soon-modal__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 1.35rem;
+}
+
+.soon-modal__btn {
+  width: 100%;
+}
+
+.soon-enter-active,
+.soon-leave-active {
+  transition: opacity 0.28s ease;
+}
+
+.soon-enter-active .soon-modal__card,
+.soon-leave-active .soon-modal__card {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease;
+}
+
+.soon-enter-from,
+.soon-leave-to {
+  opacity: 0;
+}
+
+.soon-enter-from .soon-modal__card,
+.soon-leave-to .soon-modal__card {
+  opacity: 0;
+  transform: translateY(0.85rem) scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .soon-enter-active,
+  .soon-leave-active,
+  .soon-enter-active .soon-modal__card,
+  .soon-leave-active .soon-modal__card {
+    transition: none;
+  }
+}
