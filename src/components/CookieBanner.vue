@@ -2,23 +2,16 @@
 import { onMounted, ref } from 'vue'
 import { useI18n } from '../lib/locale'
 import { getConsent, setConsent } from '../lib/consent'
-import { bootMetrika } from '../lib/metrika'
 
 const { t } = useI18n()
 const visible = ref(false)
 
 onMounted(() => {
-  const consent = getConsent()
-  if (consent === 'accepted') {
-    bootMetrika()
-    return
-  }
-  if (consent === null) visible.value = true
+  if (getConsent() === null) visible.value = true
 })
 
 function accept() {
   setConsent('accepted')
-  bootMetrika()
   visible.value = false
 }
 

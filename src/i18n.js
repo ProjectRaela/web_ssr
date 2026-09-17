@@ -18,9 +18,18 @@ export const messages = {
     cookies: {
       kicker: 'Cookies',
       title: 'A quiet note about cookies',
-      text: 'We use cookies and Yandex Metrika to understand how the site is used. You can accept analytics or continue without them.',
-      accept: 'Accept',
-      decline: 'Decline',
+      text: 'We use cookies to keep the site working and to understand how it is used — including Yandex Metrika.',
+      accept: 'Got it',
+      decline: 'Close',
+    },
+    seo: {
+      landingTitle: 'Raela — a private companion',
+      landingDescription:
+        'A long relationship in Telegram. She has her own morning, her own hours, her own mood — and she writes when something actually happens.',
+      choiceTitle: 'Raela — the seven',
+      choiceDescription: 'Seven companions. One private world. Look at them properly, then choose in the bot.',
+      heroineTitle: '{name} — Raela',
+      heroineDescription: '{lead}',
     },
     soon: {
       kicker: 'Soon',
@@ -254,9 +263,18 @@ export const messages = {
     cookies: {
       kicker: 'Cookies',
       title: 'Тихо о cookies',
-      text: 'Мы используем cookies и Яндекс Метрику, чтобы понимать, как сайт живёт. Можно принять аналитику или продолжить без неё.',
-      accept: 'Принять',
-      decline: 'Отклонить',
+      text: 'Мы используем cookies, чтобы сайт работал, и Яндекс Метрику — чтобы понимать, как он живёт.',
+      accept: 'Понятно',
+      decline: 'Закрыть',
+    },
+    seo: {
+      landingTitle: 'Raela — личная спутница',
+      landingDescription:
+        'Долгая связь в Telegram. Своё утро, свои часы, своё настроение — и она пишет, когда в её дне что-то случилось.',
+      choiceTitle: 'Raela — семёрка',
+      choiceDescription: 'Семь спутниц. Один закрытый мир. Посмотри на них нормально — выбор в боте.',
+      heroineTitle: '{name} — Raela',
+      heroineDescription: '{lead}',
     },
     soon: {
       kicker: 'Скоро',

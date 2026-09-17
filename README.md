@@ -11,7 +11,7 @@ Landing lives at `/ru` and `/en`. Heroine choice is `/ru/heroes/choice/` or `/en
 
 ## Config
 
-Edit `src/lib/constants.js` for bot / channel URLs and Yandex Metrika id. Metrika loads only after cookie consent.
+Edit `src/lib/constants.js` for bot / channel URLs, site URL, and Yandex Metrika id. Metrika loads in `index.html` on every visit.
 
 ## Local
 

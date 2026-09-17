@@ -5,10 +5,63 @@ import Heroine from './pages/Heroine.vue'
 import Logos from './pages/Logos.vue'
 import { heroines } from './data/heroines'
 import { CHOICE_TAIL, choicePath, landingPath, isLocale } from './lib/paths'
-import { guessLocale, setLocale } from './lib/locale'
+import { guessLocale, setLocale, t } from './lib/locale'
+import { applySeo } from './lib/seo'
+import { OG_IMAGE, SITE_URL, YANDEX_METRIKA_ID } from './lib/constants'
 
 function keepQuery(to, path) {
   return { path, query: to.query }
+}
+
+function fill(template, vars) {
+  return Object.entries(vars).reduce(
+    (acc, [key, value]) => acc.replaceAll(`{${key}}`, value ?? ''),
+    template,
+  )
+}
+
+function seoForRoute(to) {
+  const lang = isLocale(to.params.lang) ? to.params.lang : 'ru'
+  const path = to.path === '/' ? `/${lang}` : to.path
+
+  if (to.name === 'landing') {
+    return {
+      title: t('seo.landingTitle'),
+      description: t('seo.landingDescription'),
+      path,
+      lang,
+    }
+  }
+
+  if (to.name === 'choice') {
+    return {
+      title: t('seo.choiceTitle'),
+      description: t('seo.choiceDescription'),
+      path,
+      lang,
+    }
+  }
+
+  if (to.name === 'heroine') {
+    const id = to.params.id
+    const name = t(`heroines.${id}.name`)
+    const lead = t(`heroines.${id}.lead`)
+    return {
+      title: fill(t('seo.heroineTitle'), { name }),
+      description: fill(t('seo.heroineDescription'), { lead }),
+      path,
+      lang,
+      image: `${SITE_URL}/heroes/${id}/full.jpg`,
+    }
+  }
+
+  return {
+    title: 'Raela',
+    description: t('seo.landingDescription'),
+    path,
+    lang,
+    image: OG_IMAGE,
+  }
 }
 
 export const router = createRouter({
@@ -52,5 +105,8 @@ router.beforeEach((to) => {
 })
 
 router.afterEach((to) => {
-  if (to.name !== 'landing') document.title = 'Raela'
+  applySeo(seoForRoute(to))
+  if (typeof window.ym === 'function') {
+    window.ym(YANDEX_METRIKA_ID, 'hit', window.location.href)
+  }
 })

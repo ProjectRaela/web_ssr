@@ -1,5 +1,5 @@
 <script setup>
-import { computed, watchEffect } from 'vue'
+import { computed } from 'vue'
 import PhoneFrame from '../components/PhoneFrame.vue'
 import ChannelCta from '../components/ChannelCta.vue'
 import LandMark from '../components/LandMark.vue'
@@ -15,10 +15,6 @@ const { choiceLink, fromTelegram } = useFrom()
 
 const botHref = BOT_URL
 const botLabel = computed(() => (fromTelegram.value ? t('returnBot') : t('land.ctaBot')))
-
-watchEffect(() => {
-  document.title = t('land.docTitle')
-})
 </script>
 
 <template>
