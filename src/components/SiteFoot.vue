@@ -60,6 +60,7 @@ function onChannelClick() {
           :key="heroine.id"
           :to="choiceLink(heroine.id)"
         >
+          <span>{{ heroine.index }}</span>
           {{ t(`heroines.${heroine.id}.name`) }}
         </router-link>
       </nav>
