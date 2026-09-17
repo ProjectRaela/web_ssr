@@ -1,53 +1,37 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from '../lib/locale'
+import { useFrom } from '../lib/from'
 
 const props = defineProps({
   heroine: { type: Object, required: true },
 })
 
-const { t, locale } = useI18n()
-
+const { t } = useI18n()
+const { choiceLink } = useFrom()
 const copy = computed(() => t(`heroines.${props.heroine.id}`))
 const difficulty = computed(() => t(`difficultyMap.${props.heroine.difficulty}`))
 </script>
 
 <template>
   <router-link
-    :to="`/${heroine.id}`"
-    class="hero-card hairline block"
+    :to="choiceLink(heroine.id)"
+    class="hero-card"
     :style="{ '--accent': heroine.accent }"
   >
     <img
-      :src="`/heroes/${heroine.id}/portrait.jpg`"
+      :src="`/heroes/${heroine.id}/full.jpg`"
       :alt="copy.name"
       loading="lazy"
     />
     <div class="veil" />
-    <div class="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6">
-      <p
-        class="mb-2 text-[0.62rem] font-semibold uppercase tracking-[0.28em]"
-        :style="{ color: heroine.accent }"
-      >
-        {{ difficulty }}
-      </p>
-      <h2 class="font-display text-4xl leading-none sm:text-5xl">
-        {{ copy.name }}
-      </h2>
-      <p class="mt-2 text-sm text-mute">
-        {{ copy.role }}
-        <span class="text-ivory/40"> · {{ heroine.age }}</span>
-      </p>
-      <p class="mt-3 max-w-sm text-[0.95rem] italic text-ivory/80" :key="locale">
-        {{ copy.quote }}
-      </p>
-      <p
-        class="mt-4 inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.22em]"
-        :style="{ color: heroine.accent }"
-      >
-        {{ t('look') }}
-        <span aria-hidden="true">→</span>
-      </p>
+    <span class="hero-card__index">{{ heroine.index }}</span>
+    <div class="hero-card__meta">
+      <p class="hero-card__kicker">{{ difficulty }}</p>
+      <h2 class="hero-card__name font-display">{{ copy.name }}</h2>
+      <p class="hero-card__role">{{ copy.role }} · {{ heroine.age }}</p>
+      <p class="hero-card__quote">“{{ copy.quote }}”</p>
+      <span class="hero-card__cta">{{ t('look') }} →</span>
     </div>
   </router-link>
 </template>

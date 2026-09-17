@@ -1,30 +1,38 @@
 <script setup>
+import { computed } from 'vue'
 import { useI18n } from '../lib/locale'
-import { isTelegram, returnToBot } from '../lib/telegram'
+import { returnToBot, isTelegram } from '../lib/telegram'
+import { BOT_URL, CHANNEL_URL, useFrom } from '../lib/from'
 
 const { t } = useI18n()
+const { fromTelegram } = useFrom()
 
-function goBack() {
-  returnToBot({ action: 'close' })
+const href = computed(() => (fromTelegram.value ? BOT_URL : CHANNEL_URL))
+const label = computed(() => (fromTelegram.value ? t('returnBot') : t('openChannel')))
+
+function go() {
+  if (fromTelegram.value && isTelegram()) {
+    returnToBot({ action: 'close' })
+    return
+  }
+  window.location.href = href.value
 }
 </script>
 
 <template>
   <div
     class="pointer-events-none fixed inset-x-0 bottom-0 z-30 px-4"
-    :style="{ paddingBottom: 'calc(0.75rem + var(--safe-b))' }"
+    :style="{ paddingBottom: 'calc(0.7rem + var(--safe-b))' }"
   >
-    <div class="pointer-events-auto mx-auto flex max-w-lg flex-col items-center gap-2">
-      <p class="text-center text-[0.7rem] tracking-[0.14em] text-mute">
-        {{ t('returnHint') }}
-      </p>
-      <button
-        type="button"
-        class="w-full rounded-full bg-gold px-5 py-3.5 text-center text-[0.78rem] font-semibold tracking-[0.22em] text-ink uppercase transition hover:brightness-110"
-        @click="goBack"
+    <div class="pointer-events-auto mx-auto flex max-w-md justify-center">
+      <a
+        :href="href"
+        class="dock-btn"
+        rel="noopener noreferrer"
+        @click.prevent="go"
       >
-        {{ isTelegram() ? t('chooseInBot') : t('returnBot') }}
-      </button>
+        {{ label }}
+      </a>
     </div>
   </div>
 </template>

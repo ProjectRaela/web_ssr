@@ -1,15 +1,13 @@
-# heroes-choice
+# web-app
 
-Raela companion catalog. Vue 3 + Vite, EN/RU. Built to become a Telegram WebApp and deploy on Vercel.
+Raela Telegram WebApp. Vue 3 + Vite, EN/RU. Deploy on Vercel.
+
+Landing lives at `/ru` and `/en`. Heroine choice is `/ru/heroes/choice/` or `/en/heroes/choice/`. The first segment sets the locale.
 
 ## Brand files
 
-Upload these to Telegram:
-
-- `public/brand/telegram-channel.jpg` — channel / bot avatar (square mark)
-- `public/brand/logo-lockup.jpg` — RAELA lockup for headers and posts
-
-Web-sized copies live next to them as `channel.jpg`, `lockup.jpg`, `mark.jpg`.
+- `public/brand/telegram-channel.png` — channel / bot avatar
+- `public/brand/logo-lockup.png` — RAELA lockup
 
 ## Local
 
@@ -18,12 +16,12 @@ npm install
 npm run dev
 ```
 
+Open `http://localhost:5173/ru` or `http://localhost:5173/en`.
+
 ## Vercel
 
-Import this folder as its own repo. Framework: Vite. Output: `dist`.
+Import this folder as its own repo. Framework: Vite. Output: `dist`. SPA rewrites send unknown paths to `index.html`.
 
-Hash routes (`#/haru`) so Telegram’s WebView does not lose the page.
+## Telegram WebApp
 
-## Telegram WebApp later
-
-The page already loads `telegram-web-app.js`, calls `ready()` / `expand()`, and `sendData` + `close()` on the return button when opened inside a bot.
+Loads `telegram-web-app.js`, calls `ready()` / `expand()`, and `sendData` + `close()` from the return button on choice routes.

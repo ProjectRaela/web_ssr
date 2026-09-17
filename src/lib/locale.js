@@ -1,41 +1,24 @@
 import { computed, reactive } from 'vue'
 import { messages } from '../i18n'
 import { detectTelegramLang } from './telegram'
-
-const KEY = 'raela-locale'
+import { isLocale } from './paths'
 
 const state = reactive({
-  locale: 'en',
+  locale: 'ru',
 })
 
-function readStored() {
-  try {
-    const stored = localStorage.getItem(KEY)
-    if (stored === 'ru' || stored === 'en') return stored
-  } catch {
-    /* private mode */
-  }
-  return null
-}
-
-function guessLocale() {
+export function guessLocale() {
   return detectTelegramLang()
     ?? (navigator.language?.toLowerCase().startsWith('ru') ? 'ru' : 'en')
 }
 
 export function bootLocale() {
-  state.locale = readStored() ?? guessLocale()
-  document.documentElement.lang = state.locale
+  setLocale(guessLocale())
 }
 
 export function setLocale(next) {
-  state.locale = next === 'ru' ? 'ru' : 'en'
+  state.locale = isLocale(next) ? next : 'ru'
   document.documentElement.lang = state.locale
-  try {
-    localStorage.setItem(KEY, state.locale)
-  } catch {
-    /* ignore */
-  }
 }
 
 export const locale = computed(() => state.locale)

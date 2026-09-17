@@ -1,6 +1,7 @@
 export const heroines = [
   {
     id: 'haru',
+    index: '01',
     age: 21,
     height: 158,
     accent: '#E3A35A',
@@ -9,6 +10,7 @@ export const heroines = [
   },
   {
     id: 'rei',
+    index: '02',
     age: 25,
     height: 170,
     accent: '#8AA7C4',
@@ -17,6 +19,7 @@ export const heroines = [
   },
   {
     id: 'mio',
+    index: '03',
     age: 22,
     height: 155,
     accent: '#B7A3C9',
@@ -25,6 +28,7 @@ export const heroines = [
   },
   {
     id: 'kaede',
+    index: '04',
     age: 27,
     height: 172,
     accent: '#C46A55',
@@ -33,6 +37,7 @@ export const heroines = [
   },
   {
     id: 'yuki',
+    index: '05',
     age: 23,
     height: 166,
     accent: '#7CB86E',
@@ -41,6 +46,7 @@ export const heroines = [
   },
   {
     id: 'nami',
+    index: '06',
     age: 20,
     height: 160,
     accent: '#E39BB0',
@@ -49,6 +55,7 @@ export const heroines = [
   },
   {
     id: 'sora',
+    index: '07',
     age: 26,
     height: 168,
     accent: '#C4A484',

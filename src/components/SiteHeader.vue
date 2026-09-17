@@ -1,53 +1,50 @@
 <script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import { useI18n } from '../lib/locale'
+import { BOT_URL, useFrom } from '../lib/from'
+import { isChoicePath } from '../lib/paths'
 
-const { locale, setLocale, t } = useI18n()
+const route = useRoute()
+const { t } = useI18n()
+const { landingLink, choiceLink } = useFrom()
+const onChoice = computed(() => isChoicePath(route.path))
 </script>
 
 <template>
-  <header
-    class="sticky top-0 z-30 glass"
-    :style="{ paddingTop: 'var(--safe-t)' }"
-  >
-    <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-      <router-link to="/" class="flex items-center gap-3">
+  <header class="sticky top-0 z-30 glass" :style="{ paddingTop: 'var(--safe-t)' }">
+    <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:gap-6 sm:px-6">
+      <router-link :to="landingLink()" class="flex min-w-0 shrink items-center gap-2.5 sm:gap-3">
         <img
           src="/brand/mark.jpg"
           alt=""
-          class="h-9 w-9 rounded-full object-cover ring-1 ring-[color-mix(in_srgb,var(--color-gold)_40%,transparent)]"
+          class="h-8 w-8 shrink-0 rounded-full object-cover sm:h-10 sm:w-10"
         />
-        <div class="leading-none">
-          <p class="font-display text-[1.55rem] tracking-[0.28em] text-gold">
+        <div class="min-w-0 leading-none">
+          <p class="font-display truncate text-[1.25rem] tracking-[0.16em] text-gold sm:text-[1.7rem] sm:tracking-[0.22em]">
             {{ t('brand') }}
           </p>
-          <p class="mt-1 text-[0.62rem] uppercase tracking-[0.32em] text-mute">
+          <p class="mt-1 hidden text-[0.62rem] uppercase tracking-[0.28em] text-mute sm:block">
             {{ t('kicker') }}
           </p>
         </div>
       </router-link>
-
-      <div
-        class="hairline flex overflow-hidden rounded-full text-[0.68rem] font-semibold tracking-[0.18em]"
-        role="group"
-        :aria-label="t('lang')"
-      >
-        <button
-          type="button"
-          class="px-3 py-2 transition"
-          :class="locale === 'en' ? 'bg-gold text-ink' : 'text-mute'"
-          @click="setLocale('en')"
+      <nav class="ml-auto flex shrink-0 items-center gap-3 sm:gap-5">
+        <router-link
+          :to="choiceLink()"
+          class="hidden text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-mute hover:text-gold sm:inline"
+          :aria-current="onChoice ? 'page' : undefined"
         >
-          EN
-        </button>
-        <button
-          type="button"
-          class="px-3 py-2 transition"
-          :class="locale === 'ru' ? 'bg-gold text-ink' : 'text-mute'"
-          @click="setLocale('ru')"
+          {{ t('browse') }}
+        </router-link>
+        <a
+          :href="BOT_URL"
+          class="land-btn land-btn--gold site-tg"
+          rel="noopener noreferrer"
         >
-          RU
-        </button>
-      </div>
+          Telegram
+        </a>
+      </nav>
     </div>
   </header>
 </template>
