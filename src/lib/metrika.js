@@ -1,4 +1,4 @@
-import { YANDEX_METRIKA_ID } from './config'
+import { YANDEX_METRIKA_ID } from './constants'
 
 let booted = false
 

@@ -11,15 +11,7 @@ Landing lives at `/ru` and `/en`. Heroine choice is `/ru/heroes/choice/` or `/en
 
 ## Config
 
-Copy `.env.example` to `.env` and set links:
-
-```bash
-VITE_BOT_URL=https://example.com
-VITE_CHANNEL_URL=https://example.com
-VITE_YANDEX_METRIKA_ID=112745469
-```
-
-Defaults live in `src/lib/config.js`. Yandex Metrika loads only after cookie consent.
+Edit `src/lib/constants.js` for bot / channel URLs and Yandex Metrika id. Metrika loads only after cookie consent.
 
 ## Local
 

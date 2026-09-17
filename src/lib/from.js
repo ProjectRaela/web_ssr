@@ -1,6 +1,6 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { BOT_URL, CHANNEL_URL } from './config'
+import { BOT_URL, CHANNEL_URL } from './constants'
 import { choicePath, landingPath, isLocale } from './paths'
 import { locale } from './locale'
 
