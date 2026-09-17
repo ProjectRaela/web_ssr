@@ -3,6 +3,7 @@ import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import SiteHeader from './components/SiteHeader.vue'
 import ReturnDock from './components/ReturnDock.vue'
+import CookieBanner from './components/CookieBanner.vue'
 import { isChoicePath } from './lib/paths'
 
 const route = useRoute()
@@ -19,5 +20,6 @@ const onChoice = computed(() => isChoicePath(route.path))
       <router-view />
     </main>
     <ReturnDock v-if="onChoice" />
+    <CookieBanner />
   </div>
 </template>

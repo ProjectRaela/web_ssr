@@ -15,6 +15,13 @@ export const messages = {
     channelCtaTitle: '[Project Raela]',
     channelCtaLead: 'News, scenes, and the world behind the seven — in the channel.',
     channelCtaButton: 'Open',
+    cookies: {
+      kicker: 'Cookies',
+      title: 'A quiet note about cookies',
+      text: 'We use cookies and Yandex Metrika to understand how the site is used. You can accept analytics or continue without them.',
+      accept: 'Accept',
+      decline: 'Decline',
+    },
     returnHint: 'You choose her there. This page is only to look.',
     chooseInBot: 'I’ve seen enough',
     land: {
@@ -237,6 +244,13 @@ export const messages = {
     channelCtaTitle: '[Project Raela]',
     channelCtaLead: 'Новости, сцены и мир за семёркой — в канале.',
     channelCtaButton: 'Открыть',
+    cookies: {
+      kicker: 'Cookies',
+      title: 'Тихо о cookies',
+      text: 'Мы используем cookies и Яндекс Метрику, чтобы понимать, как сайт живёт. Можно принять аналитику или продолжить без неё.',
+      accept: 'Принять',
+      decline: 'Отклонить',
+    },
     returnHint: 'Выбор — там. Здесь только смотришь.',
     chooseInBot: 'Пора в бота',
     land: {

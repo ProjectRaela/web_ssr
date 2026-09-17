@@ -1,10 +1,10 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { BOT_URL, CHANNEL_URL } from './config'
 import { choicePath, landingPath, isLocale } from './paths'
 import { locale } from './locale'
 
-export const BOT_URL = 'https://t.me/RaelaProjectBot'
-export const CHANNEL_URL = 'https://t.me/RaelaProjet'
+export { BOT_URL, CHANNEL_URL }
 
 export function useFrom() {
   const route = useRoute()
