@@ -3,7 +3,6 @@ import { heroines } from '../data/heroines'
 import { useI18n } from '../lib/locale'
 import HeroCard from '../components/HeroCard.vue'
 import ChannelCta from '../components/ChannelCta.vue'
-import SiteFoot from '../components/SiteFoot.vue'
 
 const { t } = useI18n()
 </script>
@@ -29,7 +28,6 @@ const { t } = useI18n()
       </div>
 
       <ChannelCta />
-      <SiteFoot />
     </div>
   </div>
 </template>

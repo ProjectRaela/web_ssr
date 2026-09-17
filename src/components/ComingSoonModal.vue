@@ -3,8 +3,13 @@ import { onMounted, onUnmounted, watch } from 'vue'
 import { useI18n } from '../lib/locale'
 import { CHANNEL_URL } from '../lib/constants'
 import { botSoonOpen, closeBotSoon } from '../lib/bot'
+import { Goals, reachGoal } from '../lib/metrika'
 
 const { t } = useI18n()
+
+function onChannelClick() {
+  reachGoal(Goals.openChannel)
+}
 
 function onKey(event) {
   if (event.key === 'Escape') closeBotSoon()
@@ -51,6 +56,7 @@ onUnmounted(() => {
               class="land-btn land-btn--gold soon-modal__btn"
               target="_blank"
               rel="noopener noreferrer"
+              @click="onChannelClick"
             >
               {{ t('soon.channel') }}
             </a>

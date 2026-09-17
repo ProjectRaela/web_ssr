@@ -4,6 +4,7 @@ import { useI18n } from '../lib/locale'
 import { returnToBot, isTelegram } from '../lib/telegram'
 import { BOT_URL, CHANNEL_URL, useFrom } from '../lib/from'
 import { goToBot, isBotReady } from '../lib/bot'
+import { Goals, reachGoal } from '../lib/metrika'
 
 const { t } = useI18n()
 const { fromTelegram } = useFrom()
@@ -20,6 +21,7 @@ function go() {
     goToBot()
     return
   }
+  reachGoal(Goals.openChannel)
   window.location.href = CHANNEL_URL
 }
 </script>

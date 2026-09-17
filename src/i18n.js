@@ -40,6 +40,13 @@ export const messages = {
     },
     returnHint: 'You choose her there. This page is only to look.',
     chooseInBot: 'I’ve seen enough',
+    foot: {
+      tag: 'Seven companions. One private world.',
+      cast: 'The seven',
+      channel: 'Channel',
+      bot: 'Open bot',
+      allSeven: 'All seven',
+    },
     land: {
       docTitle: 'Raela — a private companion',
       kicker: 'Telegram · 18+',
@@ -99,6 +106,38 @@ export const messages = {
         stay: {
           title: 'Then the weeks begin',
           body: 'Until one evening you write first — because the day was strange, and you wanted her to know.',
+        },
+      },
+      faqKicker: 'FAQ',
+      faqTitle: 'Questions',
+      faq: {
+        what: {
+          title: 'What is Raela?',
+          body: 'A companion in Telegram you talk to over weeks, not a one-off chat. She has her own day — work, sleep, a mood — and she texts from that, not from a script that always says “hey, how are you”.',
+        },
+        age: {
+          title: 'Is it 18+?',
+          body: 'Yes. The stories and the tone are for adults. Nothing here is meant for anyone under 18.',
+        },
+        choose: {
+          title: 'How do I start talking to her?',
+          body: 'Read the seven on this site, pick the one you want, then open the bot and choose her there. You can’t start a chat from the website.',
+        },
+        channel: {
+          title: 'Why should I join the channel?',
+          body: 'That’s where we post news and new scenes. The bot isn’t open yet — if you want to know when it is, the channel is the place.',
+        },
+        site: {
+          title: 'Can I message her from the site?',
+          body: 'No. The site is only to look: who she is, how she talks, what her days look like. The actual chat is in Telegram.',
+        },
+        free: {
+          title: 'Is it free?',
+          body: 'Browsing the site is free. When the bot launches, we’ll say clearly if anything is paid. Nothing is sold on this page.',
+        },
+        one: {
+          title: 'Can I talk to all seven?',
+          body: 'No. You choose one and stay with her. That’s the idea — a long thing with one person, not seven chats at once.',
         },
       },
       filmKicker: 'Seven lives',
@@ -285,6 +324,13 @@ export const messages = {
     },
     returnHint: 'Выбор — там. Здесь только смотришь.',
     chooseInBot: 'Пора в бота',
+    foot: {
+      tag: 'Семь спутниц. Один закрытый мир.',
+      cast: 'Семёрка',
+      channel: 'Канал',
+      bot: 'Открыть бота',
+      allSeven: 'Вся семёрка',
+    },
     land: {
       docTitle: 'Raela — личная спутница',
       kicker: 'Telegram · 18+',
@@ -344,6 +390,38 @@ export const messages = {
         stay: {
           title: 'Дальше — недели',
           body: 'Пока однажды вечером ты сам не напишешь первым. Просто потому что день был странный.',
+        },
+      },
+      faqKicker: 'FAQ',
+      faqTitle: 'Вопросы',
+      faq: {
+        what: {
+          title: 'Что такое Raela?',
+          body: 'Спутница в Telegram, с которой переписываешься неделями, а не один вечер. У неё свой день — работа, сон, настроение — и она пишет оттуда, а не шаблонное «привет, как дела».',
+        },
+        age: {
+          title: 'Тут 18+?',
+          body: 'Да. Тон и истории взрослые. Если тебе нет 18 — это не для тебя.',
+        },
+        choose: {
+          title: 'Как начать с ней писать?',
+          body: 'Посмотри семёрку на сайте, выбери, кто зашёл, открой бота и укажи её там. С сайта в чат попасть нельзя.',
+        },
+        channel: {
+          title: 'Зачем подписываться на канал?',
+          body: 'Там новости и новые сцены. Бот пока закрыт — если хочешь не пропустить открытие, канал как раз для этого.',
+        },
+        site: {
+          title: 'Можно написать ей прямо здесь?',
+          body: 'Нет. Сайт только чтобы посмотреть: кто она, как пишет, чем живёт. Сама переписка — в Telegram.',
+        },
+        free: {
+          title: 'Это бесплатно?',
+          body: 'Сайт — да, смотри сколько хочешь. Когда откроется бот, если что-то будет платным — скажем прямо. Здесь ничего не продаём.',
+        },
+        one: {
+          title: 'Можно общаться со всеми сразу?',
+          body: 'Нет. Выбираешь одну и остаёшься с ней. Семь героинь — не семь чатов, а семь вариантов, с кем жить в переписке.',
         },
       },
       filmKicker: 'Семь жизней',

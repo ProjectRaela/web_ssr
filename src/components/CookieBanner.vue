@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { useI18n } from '../lib/locale'
 import { getConsent, setConsent } from '../lib/consent'
+import { Goals, reachGoal } from '../lib/metrika'
 
 const { t } = useI18n()
 const visible = ref(false)
@@ -12,6 +13,7 @@ onMounted(() => {
 
 function accept() {
   setConsent('accepted')
+  reachGoal(Goals.cookieAccept)
   visible.value = false
 }
 

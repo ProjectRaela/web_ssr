@@ -11,19 +11,35 @@ function upsertMeta(attr, key, content) {
   el.setAttribute('content', content)
 }
 
-function upsertLink(rel, href) {
+function upsertLink(rel, href, attrs = {}) {
   if (!href) return
-  let el = document.head.querySelector(`link[rel="${rel}"]`)
+  const extra = Object.entries(attrs)
+    .map(([key, value]) => `[${key}="${value}"]`)
+    .join('')
+  let el = document.head.querySelector(`link[rel="${rel}"]${extra}`)
   if (!el) {
     el = document.createElement('link')
     el.setAttribute('rel', rel)
+    for (const [key, value] of Object.entries(attrs)) {
+      el.setAttribute(key, value)
+    }
     document.head.appendChild(el)
   }
   el.setAttribute('href', href)
 }
 
+function localizedPath(path, lang) {
+  if (/^\/(en|ru)(\/|$)/.test(path)) {
+    return path.replace(/^\/(en|ru)/, `/${lang}`)
+  }
+  return `/${lang}${path === '/' ? '' : path}`
+}
+
 export function applySeo({ title, description, path = '/', image = OG_IMAGE, lang = 'ru' }) {
-  const url = `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`
+  const safePath = path.startsWith('/') ? path : `/${path}`
+  const url = `${SITE_URL}${safePath}`
+  const ruUrl = `${SITE_URL}${localizedPath(safePath, 'ru')}`
+  const enUrl = `${SITE_URL}${localizedPath(safePath, 'en')}`
 
   document.title = title
   document.documentElement.lang = lang
@@ -47,4 +63,7 @@ export function applySeo({ title, description, path = '/', image = OG_IMAGE, lan
   upsertMeta('name', 'twitter:image', image)
 
   upsertLink('canonical', url)
+  upsertLink('alternate', ruUrl, { hreflang: 'ru' })
+  upsertLink('alternate', enUrl, { hreflang: 'en' })
+  upsertLink('alternate', ruUrl, { hreflang: 'x-default' })
 }

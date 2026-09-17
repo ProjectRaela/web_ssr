@@ -5,7 +5,6 @@ import { getHeroine, heroines } from '../data/heroines'
 import { useI18n } from '../lib/locale'
 import { useFrom } from '../lib/from'
 import StatMeter from '../components/StatMeter.vue'
-import SiteFoot from '../components/SiteFoot.vue'
 
 const route = useRoute()
 const { t } = useI18n()
@@ -133,8 +132,6 @@ const meters = computed(() => {
           />
         </figure>
       </div>
-
-      <SiteFoot />
     </div>
   </article>
 </template>

@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import PhoneFrame from '../components/PhoneFrame.vue'
 import ChannelCta from '../components/ChannelCta.vue'
 import LandMark from '../components/LandMark.vue'
-import SiteFoot from '../components/SiteFoot.vue'
+import FaqList from '../components/FaqList.vue'
 import { heroines } from '../data/heroines'
 import { FEATURES, STEPS, DAY } from '../data/landing'
 import { useI18n } from '../lib/locale'
@@ -219,9 +219,9 @@ const botLabel = computed(() => (fromTelegram.value ? t('returnBot') : t('land.c
         </div>
       </section>
 
-      <ChannelCta />
+      <FaqList />
 
-      <SiteFoot />
+      <ChannelCta />
     </div>
   </div>
 </template>

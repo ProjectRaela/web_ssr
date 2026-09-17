@@ -7,6 +7,7 @@ import { heroines } from './data/heroines'
 import { CHOICE_TAIL, choicePath, landingPath, isLocale } from './lib/paths'
 import { guessLocale, setLocale, t } from './lib/locale'
 import { applySeo } from './lib/seo'
+import { Goals, reachGoal } from './lib/metrika'
 import { OG_IMAGE, SITE_URL, YANDEX_METRIKA_ID } from './lib/constants'
 
 function keepQuery(to, path) {
@@ -108,5 +109,8 @@ router.afterEach((to) => {
   applySeo(seoForRoute(to))
   if (typeof window.ym === 'function') {
     window.ym(YANDEX_METRIKA_ID, 'hit', window.location.href)
+  }
+  if (to.name === 'heroine' && to.params.id) {
+    reachGoal(Goals.viewHeroine, { heroine: String(to.params.id) })
   }
 })

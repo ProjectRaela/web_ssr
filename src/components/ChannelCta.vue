@@ -1,8 +1,13 @@
 <script setup>
 import { useI18n } from '../lib/locale'
 import { CHANNEL_URL } from '../lib/from'
+import { Goals, reachGoal } from '../lib/metrika'
 
 const { t } = useI18n()
+
+function onChannelClick() {
+  reachGoal(Goals.openChannel)
+}
 </script>
 
 <template>
@@ -21,6 +26,7 @@ const { t } = useI18n()
       class="channel-cta__btn"
       target="_blank"
       rel="noopener noreferrer"
+      @click="onChannelClick"
     >
       {{ t('channelCtaButton') }}
     </a>
